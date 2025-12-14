@@ -1,17 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <title>زخرفة النصوص والأسماء | زخارف يقبلها الفيس بوك</title>
+  <title id="page-title-meta">زخرفة اسماء ونصوص | انجليزي وعربي احترافي | زخارف يقبلها الفيس بوك وببجي</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="موقع لزخرفة الاسماء والكلمات باحترافية وبالخطوط العربية والإنجليزية أون لاين, زخارف عربية وإنجليزية جميلة جاهزة للنسخ ومشاركتها على فيسبوك وإنستغرام." />
-  <meta name="keywords" content="زخرفة, زخرفة اسماء, زخرفة نصوص, زخارف, زخرفة يقبلها الفيس بوك, زخرفة بالعربي, زخرفة بالانجليزي" />
+  <meta name="description" id="page-description-meta" content="أفضل موقع لزخرفة الأسماء والنصوص العربية والإنجليزية باحترافية. احصل على زخارف فريدة ومقبولة للفيس بوك، ببجي، فري فاير، تيك توك، انستقرام والمزيد. انسخ أروع الأشكال والرموز الآن." />
+  <meta name="keywords" content="زخرفة, زخرفة اسماء, زخرفة نصوص, زخارف, زخرفة انجليزي, زخرفة عربي, زخرفة عربية احترافية, زخرفة رموز, زخرفة أسماء ببجي, زخرفة حروف, أشكال زخرفة, زخرفة يقبلها الفيس بوك, زخرفة بالعربي, زخرفة بالانجليزي" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Dynamic Schema Markup will be injected here by JavaScript -->
+  <script type="application/ld+json" id="schema-markup"></script>
+  
   <style>
     body { font-family: 'Cairo', sans-serif; }
     [data-page] { display: none; }
@@ -39,6 +41,22 @@
       .xl\:grid-cols-15 {
         grid-template-columns: repeat(15, minmax(0, 1fr));
       }
+    }
+    /* Style for the image container - You can remove/modify this if you directly embed images */
+    .image-showcase {
+      min-height: 250px; /* Ensure some height even if image fails to load */
+      background: linear-gradient(to right, #6b46c1, #805ad5); /* Gradient fallback */
+      border: 1px solid rgba(128, 90, 213, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; /* Ensure image doesn't overflow */
+      position: relative;
+    }
+    .image-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Cover the container */
     }
   </style>
 </head>
@@ -70,8 +88,8 @@
       </header>
       <div class="max-w-4xl mx-auto">
         <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl shadow-2xl shadow-purple-500/20">
-          <label for="text-input" class="block text-right mb-2 text-lg font-semibold text-gray-200">أدخل النص هنا:</label>
-          <textarea id="text-input" rows="4" placeholder="اكتب شيئاً..." class="w-full p-4 bg-gray-900 border-2 border-gray-700 rounded-lg text-white text-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 resize-none"></textarea>
+          <label for="text-input" class="block text-right mb-2 text-lg font-semibold text-gray-200">أدخل النص هنا للزخرفة:</label>
+          <textarea id="text-input" rows="4" placeholder="اكتب نصاً أو اسماً لزخرفته..." class="w-full p-4 bg-gray-900 border-2 border-gray-700 rounded-lg text-white text-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 resize-none"></textarea>
         </div>
         <div id="results-container" class="mt-10"></div>
       </div>
@@ -107,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.location.hostname.endsWith('github.io')) {
             const segments = path.split('/').filter(Boolean);
             if (segments.length > 0) {
-                 if (!segments[0].endsWith('.html')) {
+                 if (!segments[0].endsWith('.html')) { // Check if it's not directly an HTML file at root
                     return '/' + segments[0];
                  }
             }
@@ -130,47 +148,174 @@ document.addEventListener('DOMContentLoaded', () => {
         return path || '/';
     };
 
-
     const routes = {
         '/': {
             type: 'decoration',
-            title: 'زخرفة اسماء ونصوص | زخارف احترافية للنسخ',
-            data: { title: 'زخرفة اسماء ونصوص', description: 'أداة زخرفة متكاملة لزخرفة الأسماء والنصوص بالعربية والإنجليزية. اختر من بين عشرات الأنماط الاحترافية وانسخها بسهولة لاستخدامها في الألعاب ووسائل التواصل الاجتماعي.' }
+            title: 'زخرفة اسماء ونصوص | انجليزي وعربي احترافي | زخارف يقبلها الفيس بوك وببجي',
+            data: {
+                h1: 'أداة زخرفة الأسماء والنصوص الشاملة',
+                description: 'موقعنا يوفر أفضل أدوات زخرفة الأسماء والنصوص العربية والإنجليزية باحترافية. اكتشف تشكيلة واسعة من الزخارف المقبولة للفيس بوك، ببجي، فري فاير، تيك توك، انستقرام والمزيد. انسخ أروع الأشكال والرموز الآن.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-8 text-gray-300 leading-loose animate-fade-in">
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-300 mb-4">مرحباً بك في موقع زخرفة النصوص الاحترافي!</h3>
+                            <p>هنا يمكنك تحويل أي نص أو اسم إلى عمل فني فريد ومميز. موقعنا يوفر لك أداة زخرفة متقدمة وسهلة الاستخدام لإنشاء <strong class="text-white">أسماء ونصوص مزخرفة</strong> باللغتين <strong class="text-white">العربية والإنجليزية</strong>، مقبولة في جميع المنصات والألعاب.</p>
+                        </div>
+                        <div class="my-8 text-center">
+                            <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-400 mb-6">شاهد أمثلة من زخارفنا الاحترافية</h2>
+                            <p class="text-gray-300 mb-4 max-w-xl mx-auto">اكتشف لمحة عن التصاميم الفريدة التي يمكنك إنشاؤها لأسماءك ونصوصك.</p>
+                            <div class="w-full max-w-2xl mx-auto rounded-lg shadow-xl image-showcase">
+                                <img src="https://via.placeholder.com/800x400/333/eee?text=Image+Showcase+Placeholder" alt="أمثلة زخرفة نصوص وأسماء عربية وانجليزية" loading="lazy">
+                                <!-- Placeholder Image. Replace 'src' with a real image of decorated text if you host one. -->
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-purple-400 mb-3">لماذا تختار موقعنا لزخرفة اسمك؟</h4>
+                            <ul class="list-disc list-inside space-y-2 pr-4">
+                                <li><strong>تشكيلة واسعة:</strong> نقدم عشرات الأنماط والخطوط المختلفة، من <strong class="text-white">زخارف الألعاب</strong> النارية مثل ببجي وفري فاير إلى الخطوط الإنجليزية الأنيقة.</li>
+                                <li><strong>سهولة الاستخدام:</strong> اكتب النص في المربع أعلاه، وستظهر لك جميع أشكال <strong class="text-white">الزخرفة</strong> تلقائياً. انسخ ما يعجبك بنقرة واحدة!</li>
+                                <li><strong>توافق كامل:</strong> جميع زخارفنا تم اختبارها لتعمل بشكل مثالي على أشهر المنصات مثل فيسبوك، انستقرام، تيك توك، وغيرها.</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-semibold text-purple-400 mb-3">زخرفة انجليزي: أروع الخطوط لاسمك</h4>
+                            <p>هل تبحث عن <strong class="text-white">زخرفة انجليزي</strong> فريدة لحسابك؟ نقدم لك مجموعة لا مثيل لها من <strong class="text-white">زخارف الحروف الإنجليزية</strong> التي تتضمن الخطوط المائلة، العريضة، المقلوبة، والمزخرفة بالرموز. اكتب اسمك الإنجليزي وشاهد التحول!</p>
+                            <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 𝕄𝕪 𝕎𝕠𝕣𝕝𝕕</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-semibold text-purple-400 mb-3">زخرفة عربي احترافية: إبداع لا حدود له</h4>
+                            <p>اجعل نصوصك العربية تتألق مع <strong class="text-white">زخرفة عربي احترافية</strong>. سواء كنت تريد <strong class="text-white">زخرفة عربية احترافية</strong> لمنشوراتك أو <strong class="text-white">زخرفة حروف</strong> عربية لاسمك، موقعنا يوفر لك تصاميم إبداعية وجميلة. استكشف <strong class="text-white">أشكال الزخرفة</strong> المتنوعة وانسخها بسهولة.</p>
+                            <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">✨‿︵الـزخـرفـة الـعـربـيـة‿︵✨</p>
+                        </div>
+                        <div class="text-right space-y-4">
+                            <h4 class="text-xl font-semibold text-purple-400 mb-3">زخرفة أسماء ببجي ورموز الألعاب</h4>
+                            <p>هل أنت لاعب وتبحث عن <strong class="text-white">زخرفة أسماء ببجي</strong> أو فري فاير مميزة؟ استخدم أداتنا لإنشاء ألقاب فريدة تحتوي على <strong class="text-white">زخرفة رموز</strong> جذابة تجعلك تبرز في ساحة المعركة. اختر من بين عشرات التصميمات الجاهزة.</p>
+                            <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">♛『الـقـائـد』♛</p>
+                        </div>
+                        <div class="text-center pt-4">
+                            <p class="text-lg font-bold text-white">ابدأ الآن واطلق العنان لإبداعك في عالم الزخرفة!</p>
+                        </div>
+                    </div>`
+            }
         },
         '/pubg': {
             type: 'decoration',
-            title: 'زخرفة أسماء ببجي | زخارف PUBG احترافية',
-            data: { title: 'زخرفة أسماء ببجي (PUBG)', description: 'اجعل اسمك في ببجي أسطورياً! زخرفة أسماء ببجي احترافية ومقبولة. احصل على ألقاب فريدة ومميزة تثير الرعب في قلوب منافسيك. انسخ اسمك المزخرف بنقرة واحدة.' }
+            title: 'زخرفة أسماء ببجي | زخارف PUBG احترافية ومقبولة 2024',
+            data: {
+                h1: 'زخرفة أسماء ببجي (PUBG) احترافية',
+                description: 'اجعل اسمك في ببجي أسطورياً! زخرفة أسماء ببجي احترافية ومقبولة لعام 2024. احصل على ألقاب فريدة ومميزة تثير الرعب في قلوب منافسيك باستخدام رموز ببجي وأشكال الزخرفة. انسخ اسمك المزخرف بنقرة واحدة.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-4">زخرفة أسماء ببجي موبايل (PUBG)</h3>
+                        <p>احصل على اسم فريد ومميز في ساحة المعركة! استخدم الأداة في الأعلى <strong class="text-white">لزخرفة اسمك في ببجي</strong> وانسخه مباشرة إلى اللعبة. اجعل خصومك يتذكرون اسمك جيداً مع <strong class="text-white">زخارف ببجي احترافية</strong>. نقدم لك أفضل <strong class="text-white">أشكال زخرفة</strong> الأسماء التي <strong class="text-white">يقبلها الفيس بوك</strong> ومنصات الألعاب.</p>
+                        <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">꧁༺الأسطورة༻꧂</p>
+                        <h4 class="text-xl font-semibold text-yellow-400 mb-3 mt-8">نصائح لزخرفة اسمك في ببجي:</h4>
+                        <ul class="list-disc list-inside space-y-2 pr-4">
+                            <li>اختر رموزاً تعبر عن شخصيتك القتالية.</li>
+                            <li>جرب دمج <strong class="text-white">زخرفة حروف</strong> عربية وأجنبية للحصول على اسم فريد.</li>
+                            <li>تأكد من أن الاسم ليس طويلاً جداً ليظهر بشكل كامل في اللعبة.</li>
+                            <li>الاستفادة من <strong class="text-white">زخرفة رموز</strong> مثل السيوف والتيجان.</li>
+                        </ul>
+                    </div>`
+            }
         },
         '/freefire': {
             type: 'decoration',
-            title: 'زخرفة اسماء فري فاير | زخارف Free Fire',
-            data: { title: 'زخرفة أسماء فري فاير', description: 'تميز في عالم فري فاير بأسماء مزخرفة لا مثيل لها. زخارف وأشكال ورموز رائعة لجعل اسمك فريداً. انسخ اسمك المفضل بسهولة وانضم للمعركة بأناقة.' }
+            title: 'زخرفة اسماء فري فاير | زخارف Free Fire احترافية ومقبولة',
+            data: {
+                h1: 'زخرفة أسماء فري فاير (Free Fire)',
+                description: 'تميز في عالم فري فاير بأسماء مزخرفة لا مثيل لها. زخارف وأشكال ورموز رائعة لجعل اسمك فريداً ومقبولاً في اللعبة. انسخ اسمك المفضل بسهولة وانضم للمعركة بأناقة مع أفضل زخرفة فري فاير.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-orange-400 mb-4">زخرفة أسماء فري فاير (Free Fire)</h3>
+                        <p>تميز عن الآخرين في فري فاير بأسماء مزخرفة بشكل احترافي. اكتب اسمك في الأعلى واختر الزخرفة التي تناسب أسلوبك في اللعب. استخدم <strong class="text-white">زخرفة حروف</strong> و<strong class="text-white">زخرفة رموز</strong> مميزة لإنشاء اسم لا يُنسى. موقعنا يقدم <strong class="text-white">أشكال زخرفة</strong> فريدة لـ Free Fire.</p>
+                        <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">☠︎︎༒︎الجلاد༒︎☠︎︎</p>
+                        <h4 class="text-xl font-semibold text-orange-400 mb-3 mt-8">اجعل اسمك في فري فاير لامعاً:</h4>
+                        <ul class="list-disc list-inside space-y-2 pr-4">
+                            <li>استخدم الرموز الشائعة في فري فاير مثل الشياطين والجماجم.</li>
+                            <li>دمج <strong class="text-white">زخرفة عربي</strong> و<strong class="text-white">زخرفة انجليزي</strong> لأسماء إبداعية.</li>
+                            <li>اختبر الزخرفة في اللعبة للتأكد من قبولها وظهورها بشكل صحيح.</li>
+                        </ul>
+                    </div>`
+            }
         },
         '/tiktok': {
             type: 'decoration',
-            title: 'زخرفة اسماء تيك توك | زخارف TikTok',
-            data: { title: 'زخرفة أسماء تيك توك', description: 'لفت الانتباه على تيك توك يبدأ من اسمك! زخرف اسم حسابك أو البايو بأشكال عصرية وجذابة. احصل على متابعين جدد بفضل ملفك الشخصي المزخرف والمميز.' }
+            title: 'زخرفة اسماء تيك توك | زخارف TikTok احترافية وجذابة',
+            data: {
+                h1: 'زخرفة أسماء تيك توك (TikTok)',
+                description: 'لفت الانتباه على تيك توك يبدأ من اسمك! زخرف اسم حسابك أو البايو بأشكال عصرية وجذابة. احصل على متابعين جدد بفضل ملفك الشخصي المزخرف والمميز. نقدم أفضل زخرفة تيك توك.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4">زخرفة أسماء وحسابات تيك توك</h3>
+                        <p>اجذب المزيد من المتابعين باسم مستخدم وبايو مزخرف بشكل فريد. زخارفنا العصرية ستجعل ملفك الشخصي على تيك توك يبرز بين الملايين. استخدم <strong class="text-white">زخرفة حروف</strong> أنيقة و<strong class="text-white">أشكال زخرفة</strong> جذابة لجذب الانتباه.</p>
+                        <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">✨ TIKTOK STAR ✨</p>
+                        <h4 class="text-xl font-semibold text-cyan-400 mb-3 mt-8">نصائح لزخرفة حسابك على تيك توك:</h4>
+                        <ul class="list-disc list-inside space-y-2 pr-4">
+                            <li>استخدم رموزاً متعلقة بالمحتوى الذي تقدمه (موسيقى، رقص، كوميديا).</li>
+                            <li>جرب <strong class="text-white">زخرفة انجليزي</strong> و<strong class="text-white">زخرفة عربي</strong> في البايو الخاص بك.</li>
+                            <li>الزخارف الخفيفة والأنيقة أفضل من المبالغ فيها.</li>
+                        </ul>
+                    </div>`
+            }
         },
         '/facebook': {
             type: 'decoration',
-            title: 'زخرفة اسماء فيسبوك | زخارف Facebook مقبولة',
-            data: { title: 'زخرفة أسماء فيسبوك', description: 'جدد شكل اسمك ومنشوراتك على فيسبوك بزخارف أنيقة ومقبولة. زخرفة نصوص وأسماء بالعربي والإنجليزي لجعل حسابك على فيسبوك أكثر تميزاً وجمالاً.' }
+            title: 'زخرفة اسماء فيسبوك | زخارف Facebook مقبولة وأنيقة',
+            data: {
+                h1: 'زخرفة أسماء فيسبوك (Facebook)',
+                description: 'جدد شكل اسمك ومنشوراتك على فيسبوك بزخارف أنيقة ومقبولة. زخرفة نصوص وأسماء بالعربي والإنجليزي لجعل حسابك على فيسبوك أكثر تميزاً وجمالاً. اكتشف أفضل زخرفة فيسبوك.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-4">زخرفة أسماء فيسبوك</h3>
+                        <p>جدد مظهر اسمك ومنشوراتك على فيسبوك! استخدم زخارفنا المقبولة والأنيقة لجعل حسابك أكثر تميزاً وجاذبية لأصدقائك. سواء كنت تبحث عن <strong class="text-white">زخرفة عربي</strong> أو <strong class="text-white">زخرفة انجليزي</strong>، ستجد ما يناسبك هنا. نقدم لك <strong class="text-white">زخرفة عربية احترافية</strong> للحسابات الشخصية.</p>
+                        <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">˙·٠•●♥ ᔕTᗩᖇ ♥●•٠·˙</p>
+                        <h4 class="text-xl font-semibold text-blue-400 mb-3 mt-8">نصائح لزخرفة ملفك الشخصي على فيسبوك:</h4>
+                        <ul class="list-disc list-inside space-y-2 pr-4">
+                            <li>تجنب الزخارف المبالغ فيها التي قد تبدو غير احترافية.</li>
+                            <li>ركز على استخدام <strong class="text-white">أشكال زخرفة</strong> ورموز بسيطة وأنيقة.</li>
+                            <li>تأكد من أن الاسم المزخرف لا يخالف سياسات فيسبوك.</li>
+                        </ul>
+                    </div>`
+            }
         },
         '/instagram': {
             type: 'decoration',
-            title: 'زخرفة اسماء انستا | زخارف Instagram',
-            data: { title: 'زخرفة أسماء انستقرام', description: 'اجعل حسابك على انستقرام تحفة فنية! زخرفة أسماء وبايو انستا بأجمل الخطوط والرموز. انسخ الزخرفة التي تعجبك وقم بلصقها مباشرة في ملفك الشخصي.' }
+            title: 'زخرفة اسماء انستا | زخارف Instagram وبايو احترافي',
+            data: {
+                h1: 'زخرفة أسماء انستقرام (Instagram)',
+                description: 'اجعل حسابك على انستقرام تحفة فنية! زخرفة أسماء وبايو انستا بأجمل الخطوط والرموز. انسخ الزخرفة التي تعجبك وقم بلصقها مباشرة في ملفك الشخصي. اكتشف أروع زخرفة انستا هنا.',
+                welcomeContentHtml: `
+                    <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-pink-400 mb-4">زخرفة أسماء وبايو انستقرام</h3>
+                        <p>حول البايو الخاص بك في انستقرام إلى لوحة فنية! زخرف اسمك ووصف حسابك بأجمل الخطوط والرموز التي تعكس شخصيتك. سواء كنت تريد <strong class="text-white">زخرفة حروف</strong> أو <strong class="text-white">زخرفة رموز</strong>، لدينا الخيارات الأفضل. يمكنك استخدام <strong class="text-white">زخرفة انجليزي</strong> أو <strong class="text-white">زخرفة عربي</strong> لجعل حسابك مميزاً.</p>
+                        <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">💖 insta-queen 💖</p>
+                        <h4 class="text-xl font-semibold text-pink-400 mb-3 mt-8">نصائح لتصميم بايو انستقرام مزخرف:</h4>
+                        <ul class="list-disc list-inside space-y-2 pr-4">
+                            <li>استخدم الرموز التعبيرية بحكمة لتكمل النص المزخرف.</li>
+                            <li>اختر خطوطاً سهلة القراءة ولكنها مميزة (مثل Cursive أو Monospace).</li>
+                            <li>يمكنك دمج <strong class="text-white">أشكال زخرفة</strong> صغيرة بين الكلمات لكسر الروتين.</li>
+                        </ul>
+                    </div>`
+            }
         },
         '/islamic': {
             type: 'islamic-symbols',
-            title: 'زخارف ورموز إسلامية للنسخ | آيات وعبارات دينية',
-            data: { title: 'زخارف ورموز إسلامية جاهزة للنسخ', description: 'مكتبة شاملة من الرموز والعبارات الإسلامية الجاهزة للنسخ، مثل ﷽، ﷲ، ﷺ، وعلامات الوقف. استخدمها لتزيين منشوراتك ورسائلك بلمسة إيمانية.' }
+            title: 'زخارف ورموز إسلامية للنسخ | آيات وعبارات دينية جميلة',
+            data: {
+                h1: 'زخارف ورموز إسلامية جاهزة للنسخ',
+                description: 'مكتبة شاملة من الرموز والعبارات الإسلامية الجاهزة للنسخ، مثل ﷽، ﷲ، ﷺ، وعلامات الوقف القرآنية. استخدم <strong class="text-white">زخرفة رموز</strong> إسلامية لتزيين منشوراتك ورسائلك بلمسة إيمانية و<strong class="text-white">زخرفة عربية احترافية</strong>.',
+                welcomeContentHtml: '' // No specific welcome content needed here, symbols are self-explanatory
+            }
         },
         '/symbols': {
             type: 'symbols',
-            title: 'زخارف ورموز للنسخ | إيموجي ورموز نادرة',
-            data: { title: 'زخارف ورموز جاهزة للنسخ', description: 'مكتبة ضخمة من الرموز، الإيموجي، الأشكال والزخارف النادرة الجاهزة للنسخ واللصق. استخدمها في ببجي، فيسبوك، انستقرام وأي مكان آخر.' }
+            title: 'زخارف ورموز للنسخ | إيموجي وأشكال نادرة ومتنوعة',
+            data: {
+                h1: 'زخارف ورموز جاهزة للنسخ',
+                description: 'مكتبة ضخمة من الرموز، الإيموجي، الأشكال والزخارف النادرة الجاهزة للنسخ واللصق. استخدم <strong class="text-white">زخرفة رموز</strong> في ببجي، فيسبوك، انستقرام وأي مكان آخر لتعزيز <strong class="text-white">أشكال الزخرفة</strong> الخاصة بك.',
+                welcomeContentHtml: '' // No specific welcome content needed here, symbols are self-explanatory
+            }
         }
     };
 
@@ -179,64 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { path: '/tiktok', label: 'تيك توك' }, { path: '/facebook', label: 'فيسبوك' }, { path: '/instagram', label: 'انستقرام' },
         { path: '/islamic', label: 'زخارف إسلامية' }, { path: '/symbols', label: 'رموز للنسخ' }
     ];
-
-    const getWelcomeContent = (path) => {
-        const pageSpecificContent = {
-            '/pubg': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
-                <h3 class="text-2xl font-bold text-yellow-400 mb-4">زخرفة أسماء ببجي موبايل (PUBG)</h3>
-                <p>احصل على اسم فريد ومميز في ساحة المعركة! استخدم الأداة في الأعلى لزخرفة اسمك وانسخه مباشرة إلى اللعبة. اجعل خصومك يتذكرون اسمك جيداً.</p>
-                <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">꧁༺الأسطورة༻꧂</p>
-              </div>`,
-            '/freefire': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
-                <h3 class="text-2xl font-bold text-orange-400 mb-4">زخرفة أسماء فري فاير (Free Fire)</h3>
-                <p>تميز عن الآخرين في فري فاير بأسماء مزخرفة بشكل احترافي. اكتب اسمك في الأعلى واختر الزخرفة التي تناسب أسلوبك في اللعب.</p>
-                <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">☠︎︎༒︎الجلاد༒︎☠︎︎</p>
-              </div>`,
-            '/tiktok': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
-                <h3 class="text-2xl font-bold text-cyan-400 mb-4">زخرفة أسماء وحسابات تيك توك</h3>
-                <p>اجذب المزيد من المتابعين باسم مستخدم وبايو مزخرف بشكل فريد. زخارفنا العصرية ستجعل ملفك الشخصي على تيك توك يبرز بين الملايين.</p>
-                <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">✨ TIKTOK STAR ✨</p>
-              </div>`,
-            '/facebook': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
-                <h3 class="text-2xl font-bold text-blue-400 mb-4">زخرفة أسماء فيسبوك</h3>
-                <p>جدد مظهر اسمك ومنشوراتك على فيسبوك! استخدم زخارفنا المقبولة والأنيقة لجعل حسابك أكثر تميزاً وجاذبية لأصدقائك.</p>
-                <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">˙·٠•●♥ ᔕTᗩᖇ ♥●•٠·˙</p>
-              </div>`,
-            '/instagram': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-4 text-gray-300 animate-fade-in">
-                <h3 class="text-2xl font-bold text-pink-400 mb-4">زخرفة أسماء وبايو انستقرام</h3>
-                <p>حول البايو الخاص بك في انستقرام إلى لوحة فنية! زخرف اسمك ووصف حسابك بأجمل الخطوط والرموز التي تعكس شخصيتك.</p>
-                <p class="font-mono text-center p-3 bg-gray-900/50 rounded-md text-lg">💖 insta-queen 💖</p>
-              </div>`,
-            '/': `
-              <div class="text-right mt-12 p-8 bg-gray-800/30 rounded-lg space-y-8 text-gray-300 leading-loose animate-fade-in">
-                <div>
-                  <h3 class="text-2xl font-bold text-purple-300 mb-4">مرحباً بك في موقع زخرفة النصوص الاحترافي!</h3>
-                  <p>هنا يمكنك تحويل أي نص أو اسم إلى عمل فني فريد ومميز. موقعنا يوفر لك أداة زخرفة متقدمة وسهلة الاستخدام لإنشاء أسماء ونصوص مزخرفة باللغتين العربية والإنجليزية، مقبولة في جميع المنصات والألعاب.</p>
-                </div>
-                <div>
-                  <h4 class="text-xl font-semibold text-purple-400 mb-3">لماذا تختار موقعنا لزخرفة اسمك؟</h4>
-                  <ul class="list-disc list-inside space-y-2 pr-4">
-                    <li><strong>تشكيلة واسعة:</strong> نقدم عشرات الأنماط والخطوط المختلفة، من زخارف الألعاب النارية مثل ببجي وفري فاير إلى الخطوط الإنجليزية الأنيقة.</li>
-                    <li><strong>سهولة الاستخدام:</strong> اكتب النص في المربع أعلاه، وستظهر لك جميع أشكال الزخرفة تلقائياً. انسخ ما يعجبك بنقرة واحدة!</li>
-                    <li><strong>توافق كامل:</strong> جميع زخارفنا تم اختبارها لتعمل بشكل مثالي على أشهر المنصات مثل فيسبوك، انستقرام، تيك توك، وغيرها.</li>
-                  </ul>
-                </div>
-                 <div>
-                  <h4 class="text-xl font-semibold text-purple-400 mb-3">زخرفة أسماء للألعاب ووسائل التواصل الاجتماعي</h4>
-                  <p>هل تبحث عن اسم مميز لحسابك في <span class="font-bold text-white">PUBG</span> أو <span class="font-bold text-white">Free Fire</span>؟ أو ربما تريد تزيين البايو الخاص بك في <span class="font-bold text-white">انستقرام</span> أو <span class="font-bold text-white">تيك توك</span>؟ لقد وصلت إلى المكان الصحيح.</p>
-                </div>
-                <div class="text-center pt-4">
-                  <p class="text-lg font-bold text-white">ابدأ الآن واطلق العنان لإبداعك!</p>
-                </div>
-              </div>`
-        };
-        return pageSpecificContent[path] || pageSpecificContent['/'];
-    };
 
     const symbolCategories = [
         { title: 'رموز شائعة ومميزة', symbols: ['💙','💎','✨','😎','💻','✔️','🌙','🤣','🎤','💜','🎮','❤️','😍','🖤','⚔️','😂','💕','🎧','🌹','📌','🏳️‍🌈','👑','🎼','💛','😊','🧡','📞','❣️','🔊','💫','💖','🤩','💞','☕️','💔','🌸','⚜️','🔪','⚠️','🥀','😭','🎥','🔫','📍','🔥','⚡️','👉','🇹🇷','🌻','😈','💬','😅','😉','🔒','❗️','👍','🤔','👌','📝','😘','😔','🌺','✈️','💗','📜','📚','💚','⭐️','🤪','📷','🐶','🐱','🎶','🍒','🤗','💰','📱','🐺','☁️','❌','🎨','💣','🔰','🐰','🙄','♥️','🌞','👀','📲','☪️','👻','🔞','😁','😏','😴','💓','🎸','🤬','🔨','🦁','🎉','🦋','🌿','🔴','🏆','🦄','🌼','🍑','💡','🔧','🐾','🗡','🎬','🐍','⚙️','🛠','🔱','☄️','🌊','😡','✏️','🍁','🙂','🤖','⛏','⛔️','🛡','💘','🚫','🍃','😄','💀','📸','🔮','⚽️','🌟','🍪','🎵','🔔','🌷','💪','😱','🐼','💦','😜','🤧','🍓','📣','📢','🐉','🤭','🇧🇷','👥','🍌','⚖️','🔑','💟','☺️','🕹','💸','🎀','🎈','🕊','🤤','🌌','📊','📖','✝️','🙏','✌️','🍀','❓','💯','☎️','🚬','💊','📋','🔐','🎲','💋','👊','💼','🍷','⏳','⚒','💉','🔸','🎹','🦊','🐻','☘️','👤','🖕','👇','💍','😋'] },
@@ -266,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
         squaredMap: { 'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄶', 'h': '🄷', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉', 'A': '🄰', 'B': '🄱', 'C': '🄲', 'D': '🄳', 'E': '🄴', 'F': '🄵', 'G': '🄶', 'H': '🄷', 'I': '🄸', 'J': '🄹', 'K': '🄺', 'L': '🄻', 'M': '🄼', 'N': '🄽', 'O': '🄾', 'P': '🄿', 'Q': '🅀', 'R': '🅁', 'S': '🅂', 'T': '🅃', 'U': '🅄', 'V': '🅅', 'W': '🅆', 'X': '🅇', 'Y': '🅈', 'Z': '🅉' },
         transform(text, map) { return text.split('').map(char => map[char] || char).join(''); },
         arabicStyle4(text) {
+            // Simplified for demonstration. Real Arabic decoration is complex.
             const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZاأإآبتثجحخدذرزسشصضطظعغفقكلمنهويىةءؤئ';
             const زخرفة = 'ặßçđěřġħíĵķĺṁñőpqřšťůvwxŷźẶßÇĐĚŘĠĦÍĴĶĹṀÑŐPQŘŠŤŮVWXŶŹاأإآبـتـثجـحـخـدذرزسـشـصـضـطـظـعـغـفـقـكـلـمـنـهـويـىةءؤئ';
             return text.split('').map(char => {
@@ -283,11 +371,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 { name: 'زخرفة نجوم ✨', value: `✨✴️ ${text} ✴️✨`}, { name: 'زخرفة عربية 彡1彡', value: `★彡${text}彡★` },
                 { name: 'زخرفة عربية ꧁2꧂', value: `꧁${text}꧂` }, { name: 'زخرفة عربية 【3】', value: `【${text}】` },
                 { name: 'زخرفة عربية 🎼', value: `..•.¸¸•´¯\`•.¸¸.•.. ${text} ..•.¸¸•´¯\`•.¸¸.•..` }, { name: 'زخرفة عربية متشابكة', value: this.arabicStyle4(text) },
-                { name: 'زخرفة عربية ممتدة', value: text.split('').join('ـ') }, { name: 'Small Caps', value: this.transform(text, this.smallCapsMap) },
-                { name: 'Monospace', value: this.transform(text, this.monospaceMap) }, { name: 'Cursive', value: this.transform(text, this.cursiveMap) },
-                { name: 'Bold Fraktur', value: this.transform(text, this.boldFrakturMap) }, { name: 'Double Struck', value: this.transform(text, this.doubleStruckMap) },
-                { name: 'Squared', value: this.transform(text, this.squaredMap) }, { name: 'Circled', value: this.transform(text, this.circledMap) },
-                { name: 'Upside Down', value: this.transform(text, this.upsideDownMap) },
+                { name: 'زخرفة عربية ممتدة', value: text.split('').join('ـ') },
+                { name: 'زخرفة انجليزي Small Caps', value: this.transform(text, this.smallCapsMap) },
+                { name: 'زخرفة انجليزي Monospace', value: this.transform(text, this.monospaceMap) },
+                { name: 'زخرفة انجليزي Cursive', value: this.transform(text, this.cursiveMap) },
+                { name: 'زخرفة انجليزي Bold Fraktur', value: this.transform(text, this.boldFrakturMap) },
+                { name: 'زخرفة انجليزي Double Struck', value: this.transform(text, this.doubleStruckMap) },
+                { name: 'زخرفة انجليزي Squared', value: this.transform(text, this.squaredMap) },
+                { name: 'زخرفة انجليزي Circled', value: this.transform(text, this.circledMap) },
+                { name: 'زخرفة انجليزي Upside Down', value: this.transform(text, this.upsideDownMap) },
             ];
         }
     };
@@ -295,6 +387,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DOM ELEMENTS ---
     const appContent = document.getElementById('app-content');
     const navLinksContainer = document.getElementById('nav-links');
+    const pageTitleMeta = document.getElementById('page-title-meta');
+    const pageDescriptionMeta = document.getElementById('page-description-meta');
+    const schemaMarkupScript = document.getElementById('schema-markup');
 
     // --- RENDER FUNCTIONS ---
     function renderNav() {
@@ -317,18 +412,101 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    // Function to render Schema Markup
+    function renderSchemaMarkup(routeData, appPath) {
+        const url = window.location.origin + basePath + appPath;
+        let schema = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": `${window.location.origin}${basePath || '/'}#website`,
+                    "url": `${window.location.origin}${basePath || '/'}`,
+                    "name": "زخرفة النصوص والأسماء",
+                    "description": "موقع لزخرفة الاسماء والكلمات باحترافية وبالخطوط العربية والإنجليزية أون لاين.",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": {
+                            "@type": "EntryPoint",
+                            "urlTemplate": `${window.location.origin}${basePath || '/'}?q={search_term_string}`
+                        },
+                        "query-input": "required name=search_term_string"
+                    }
+                },
+                {
+                    "@type": "WebPage",
+                    "@id": `${url}#webpage`,
+                    "url": url,
+                    "name": routeData.title,
+                    "isPartOf": { "@id": `${window.location.origin}${basePath || '/'}#website` },
+                    "description": routeData.data.description,
+                    "inLanguage": "ar",
+                    "primaryImageOfPage": {
+                        "@type": "ImageObject",
+                        "url": `${window.location.origin}${basePath || '/'}og-image.jpg`, // Replace with actual OG image URL
+                        "width": "1200",
+                        "height": "630"
+                    },
+                    "datePublished": "2023-01-01", // Update if you have dynamic publishing dates
+                    "dateModified": new Date().toISOString().split('T')[0] // Current date for modification
+                }
+            ]
+        };
+
+        if (appPath === '/') {
+            // Add HowTo schema for the main decoration page
+            schema["@graph"].push({
+                "@type": "HowTo",
+                "name": "كيفية زخرفة اسمك أو نصك",
+                "description": "اتبع هذه الخطوات البسيطة لزخرفة النصوص والأسماء على موقعنا.",
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "text": "أدخل النص في مربع الإدخال",
+                        "itemListElement": [
+                            { "@type": "HowToDirection", "text": "ابحث عن مربع الإدخال المسمى 'أدخل النص هنا للزخرفة'." }
+                        ]
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "text": "اختر الزخرفة المفضلة",
+                        "itemListElement": [
+                            { "@type": "HowToDirection", "text": "بمجرد إدخال النص، ستظهر لك عشرات أشكال الزخرفة تلقائياً." }
+                        ]
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "text": "اضغط على زر النسخ",
+                        "itemListElement": [
+                            { "@type": "HowToDirection", "text": "اضغط على زر 'نسخ' بجوار الزخرفة التي تعجبك لنسخها إلى الحافظة." }
+                        ]
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "text": "استخدم النص المزخرف",
+                        "itemListElement": [
+                            { "@type": "HowToDirection", "text": "الصق النص المزخرف في ألعابك المفضلة أو على وسائل التواصل الاجتماعي." }
+                        ]
+                    }
+                ]
+            });
+        }
+        
+        schemaMarkupScript.textContent = JSON.stringify(schema, null, 2);
+    }
+
     function renderDecorationPage(route) {
         const template = document.getElementById('decoration-page-template').content.cloneNode(true);
         appContent.innerHTML = '';
         appContent.appendChild(template);
         appContent.querySelector('[data-page]').classList.add('active');
 
-        appContent.querySelector('#page-title').textContent = route.data.title;
+        appContent.querySelector('#page-title').textContent = route.data.h1;
         appContent.querySelector('#page-description').textContent = route.data.description;
         
         const textInput = appContent.querySelector('#text-input');
         const resultsContainer = appContent.querySelector('#results-container');
-        const welcomeContent = getWelcomeContent(getAppPath());
+        const welcomeContent = route.data.welcomeContentHtml;
         resultsContainer.innerHTML = welcomeContent;
 
         const debouncedRender = debounce((text) => {
@@ -341,8 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="animate-fade-in-item">
                                 <h3 class="text-sm text-purple-300 mb-2 mr-2 font-semibold">${result.name}</h3>
                                 <div class="bg-gray-800 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 hover:bg-gray-700/50">
-                                    <p class="text-xl text-center sm:text-right flex-grow font-mono bg-gray-900/50 p-3 rounded-md w-full sm:w-auto overflow-x-auto">${result.value}</p>
-                                    <button data-copy-value="${result.value}" class="copy-btn w-full sm:w-auto px-6 py-2 rounded-md font-bold transition-all duration-300 ease-in-out text-white flex-shrink-0 bg-purple-600 hover:bg-purple-700">
+                                    <p class="text-xl text-center sm:text-right flex-grow font-mono bg-gray-900/50 p-3 rounded-md w-full sm:w-auto overflow-x-auto select-all">${result.value}</p>
+                                    <button data-copy-value="${result.value}" class="copy-btn w-full sm:w-auto px-6 py-2 rounded-md font-bold transition-all duration-300 ease-in-out text-white flex-shrink-0 bg-purple-600 hover:bg-purple-700" aria-label="نسخ هذا النص المزخرف">
                                         <span>نسخ</span>
                                     </button>
                                 </div>
@@ -371,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appContent.querySelector('[data-page]').classList.add('active');
 
 
-        appContent.querySelector('#page-title').textContent = route.data.title;
+        appContent.querySelector('#page-title').textContent = route.data.h1;
         appContent.querySelector('#page-description').textContent = route.data.description;
         
         const container = appContent.querySelector(`#${containerId}`);
@@ -384,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = categories[categoryIndex];
             const section = document.createElement('section');
             section.className = 'mb-12 animate-fade-in';
-            section.style.opacity = '0';
+            section.style.opacity = '0'; // Start invisible for fade-in
 
             section.innerHTML = `
                 <h2 class="text-2xl sm:text-3xl font-bold ${isIslamic ? 'text-teal-300 border-teal-500/30' : 'text-purple-300 border-purple-500/30'} mb-6 pb-2 border-b-2">
@@ -392,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </h2>
                 <div class="grid ${isIslamic ? 'grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3' : 'grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-15 gap-2'}">
                     ${category.symbols.map(symbol => `
-                        <div tabindex="0" data-copy-value="${symbol}" class="copy-symbol-btn relative flex items-center justify-center ${isIslamic ? 'h-20 text-xl sm:text-2xl p-2' : 'h-16 text-3xl'} bg-gray-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out ${isIslamic ? 'hover:bg-teal-600/50' : 'hover:bg-purple-600/50'} hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 ${isIslamic ? 'focus:ring-teal-400' : 'focus:ring-purple-400'}">
+                        <div tabindex="0" data-copy-value="${symbol}" class="copy-symbol-btn relative flex items-center justify-center ${isIslamic ? 'h-20 text-xl sm:text-2xl p-2' : 'h-16 text-3xl'} bg-gray-800/50 rounded-lg cursor-pointer transition-all duration-200 ease-in-out ${isIslamic ? 'hover:bg-teal-600/50' : 'hover:bg-purple-600/50'} hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 ${isIslamic ? 'focus:ring-teal-400' : 'focus:ring-purple-400'}" aria-label="نسخ رمز ${symbol}">
                             <span class="text-center">${symbol}</span>
                         </div>
                     `).join('')}
@@ -406,44 +584,71 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             categoryIndex++;
-            requestAnimationFrame(renderNextCategory);
+            requestAnimationFrame(renderNextCategory); // Schedule next category rendering
         }
         
-        renderNextCategory();
+        renderNextCategory(); // Start rendering categories
     }
 
     // --- EVENT HANDLING & ROUTING ---
     function copyText(value, element) {
-        if (!navigator.clipboard) return;
+        if (!navigator.clipboard) {
+            // Fallback for older browsers or if clipboard API not available
+            const textarea = document.createElement('textarea');
+            textarea.value = value;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            textarea.remove();
+            showCopyFeedback(element, "تم النسخ!");
+            return;
+        }
         navigator.clipboard.writeText(value).then(() => {
-            const originalText = element.innerHTML;
-            element.innerHTML = '<span>تم النسخ!</span>';
-            element.classList.remove('bg-purple-600', 'hover:bg-purple-700');
-            element.classList.add('bg-green-600');
-            
-            setTimeout(() => {
-                element.innerHTML = originalText;
-                element.classList.remove('bg-green-600');
-                element.classList.add('bg-purple-600', 'hover:bg-purple-700');
-            }, 2000);
+            showCopyFeedback(element, "تم النسخ!");
         }).catch(err => console.error('Failed to copy: ', err));
     }
 
-    function copySymbol(value, element) {
-        if (!navigator.clipboard) return;
-        navigator.clipboard.writeText(value).then(() => {
-            const existingPopup = document.querySelector('.copied-popup');
-            if (existingPopup) existingPopup.remove();
+    function showCopyFeedback(element, message) {
+        const originalText = element.innerHTML;
+        element.innerHTML = `<span>${message}</span>`;
+        element.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+        element.classList.add('bg-green-600');
+        
+        setTimeout(() => {
+            element.innerHTML = originalText;
+            element.classList.remove('bg-green-600');
+            element.classList.add('bg-purple-600', 'hover:bg-purple-700');
+        }, 2000);
+    }
 
-            const popup = document.createElement('div');
-            popup.className = 'copied-popup absolute -top-8 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-lg z-10 animate-popup';
-            popup.textContent = 'تم النسخ!';
-            element.appendChild(popup);
-            
-            setTimeout(() => {
-                popup.remove();
-            }, 1500);
+    function copySymbol(value, element) {
+        if (!navigator.clipboard) {
+            const textarea = document.createElement('textarea');
+            textarea.value = value;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            textarea.remove();
+            showSymbolCopyFeedback(element, "تم النسخ!");
+            return;
+        }
+        navigator.clipboard.writeText(value).then(() => {
+            showSymbolCopyFeedback(element, "تم النسخ!");
         }).catch(err => console.error('Failed to copy: ', err));
+    }
+
+    function showSymbolCopyFeedback(element, message) {
+        const existingPopup = document.querySelector('.copied-popup');
+        if (existingPopup) existingPopup.remove();
+
+        const popup = document.createElement('div');
+        popup.className = 'copied-popup absolute -top-8 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-lg z-10 animate-popup';
+        popup.textContent = message;
+        element.appendChild(popup);
+        
+        setTimeout(() => {
+            popup.remove();
+        }, 1500);
     }
     
     appContent.addEventListener('click', (e) => {
@@ -460,10 +665,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.body.addEventListener('click', e => {
         const link = e.target.closest('a');
+        // Ensure the link is internal to avoid intercepting external links
         if (link && link.origin === window.location.origin) {
             e.preventDefault();
             const href = link.getAttribute('href');
-            if (href !== window.location.pathname) {
+            // Only push state if the URL is different to avoid redundant history entries
+            if (window.location.pathname !== href) {
                 history.pushState({}, '', href);
                 router();
             }
@@ -474,7 +681,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const appPath = getAppPath();
         const route = routes[appPath] || routes['/']; // Fallback to home page for unknown paths
 
+        // Update meta tags for SEO
         document.title = route.title;
+        pageTitleMeta.textContent = route.title; // Update meta title
+        pageDescriptionMeta.setAttribute('content', route.data.description); // Update meta description
+
+        // Render Schema Markup
+        renderSchemaMarkup(route, appPath);
 
         switch(route.type) {
             case 'decoration':
@@ -490,18 +703,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update active nav link
         navLinksContainer.querySelectorAll('a').forEach(a => {
-            const href = a.getAttribute('href');
-            let linkAppPath = href;
-            // Also handle the case where basePath is empty string
-            if (basePath && href.startsWith(basePath)) {
-                 linkAppPath = href.substring(basePath.length);
-            }
-            if (!linkAppPath.startsWith('/')) {
-                linkAppPath = '/' + linkAppPath;
-            }
-            if(linkAppPath === '') linkAppPath = '/';
+            const linkHref = a.getAttribute('href');
+            let cleanedLinkPath = linkHref.replace(basePath, '');
+            if (!cleanedLinkPath.startsWith('/')) cleanedLinkPath = '/' + cleanedLinkPath;
+            if (cleanedLinkPath === '') cleanedLinkPath = '/'; // Handle root path
 
-            if (linkAppPath === appPath) {
+            if (cleanedLinkPath === appPath) {
                 a.classList.add('bg-purple-600', 'text-white', 'shadow-md');
             } else {
                 a.classList.remove('bg-purple-600', 'text-white', 'shadow-md');
