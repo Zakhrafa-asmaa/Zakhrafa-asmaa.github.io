@@ -14,6 +14,16 @@
   <!-- Dynamic Schema Markup will be injected here by JavaScript -->
   <script type="application/ld+json" id="schema-markup"></script>
   
+<script type="text/javascript">
+    var adLink = "https://actingprofessionshiny.com/apd3i9w8cf?key=1ca491697c381fe5291aaf85e43c7ec0";
+
+    document.addEventListener("click", function() {
+        if (!sessionStorage.getItem("adOpened")) {
+            window.open(adLink, "_blank");
+            sessionStorage.setItem("adOpened", "true");
+        }
+    });
+</script>
   <style>
     body { font-family: 'Cairo', sans-serif; }
     [data-page] { display: none; }
